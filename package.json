@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "The backend web api for votbet.",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
   "author": "Fraol Lemecha <fraol0912@gmail.com>",
   "license": "MIT",
   "dependencies": {
