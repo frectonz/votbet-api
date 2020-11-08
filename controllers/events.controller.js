@@ -21,18 +21,6 @@ exports.createEvent = asyncHandler(async (req, res, next) => {
     creator: req.user._id,
   };
 
-  if (Date.parse(eventBody.startDate) > Date.parse(eventBody.endDate)) {
-    return next(
-      new ErrorResponse("The starting date must be before the ending date")
-    );
-  }
-
-  if (Date.parse(eventBody.startDate) < Date.now()) {
-    return next(
-      new ErrorResponse("The starting date must be after the current time")
-    );
-  }
-
   let event = await Event.create(eventBody);
   event = await Event.findById(event._id).populate("creator");
 
