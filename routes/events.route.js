@@ -7,7 +7,6 @@ const {
   deleteEventById,
   watchEventById,
   eventsBeingWatched,
-  serachEvents,
 } = require("../controllers/events.controller");
 
 const { protect } = require("../middlewares/auth");
@@ -17,7 +16,6 @@ const router = express.Router();
 router.post("/", protect, createEvent);
 router.get("/", protect, getAllEvents);
 router.get("/watching", protect, eventsBeingWatched);
-router.put("/search/", protect, serachEvents);
 
 router.get("/:eventId", protect, getEventById);
 router.put("/:eventId", protect, updateEventById);

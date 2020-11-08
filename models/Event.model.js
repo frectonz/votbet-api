@@ -7,12 +7,10 @@ const EventSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
-    text: true,
     required: [true, "Please add an event name"],
   },
   description: {
     type: String,
-    text: true,
     required: [true, "Please add an event description"],
   },
   startDate: {

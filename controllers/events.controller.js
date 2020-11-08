@@ -224,21 +224,3 @@ exports.eventsBeingWatched = asyncHandler(async (req, res) => {
     data: events,
   });
 });
-
-// @desc      Search events
-// @route     GET /api/v1/events/search/:searchString
-// @access    Private
-exports.serachEvents = asyncHandler(async (req, res) => {
-  const limit = parseInt(req.query.limit) || 10;
-  const searchString = req.body.searchString;
-
-  const events = await Event.find({ $text: { $search: searchString } }).limit(
-    limit
-  );
-
-  res.status(200).json({
-    success: true,
-    count: events.length,
-    data: events,
-  });
-});
