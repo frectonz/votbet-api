@@ -1,0 +1,26 @@
+{
+  "name": "votbet-api",
+  "version": "1.0.0",
+  "description": "The backend web api for votbet.",
+  "main": "server.js",
+  "scripts": {},
+  "author": "Fraol Lemecha <fraol0912@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.15",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
