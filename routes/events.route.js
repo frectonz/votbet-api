@@ -7,6 +7,7 @@ const {
   deleteEventById,
   watchEventById,
   eventsBeingWatched,
+  uploadEventPicture,
 } = require("../controllers/events.controller");
 
 const { protect } = require("../middlewares/auth");
@@ -21,5 +22,6 @@ router.get("/:eventId", protect, getEventById);
 router.put("/:eventId", protect, updateEventById);
 router.delete("/:eventId", protect, deleteEventById);
 router.put("/:eventId/watch", protect, watchEventById);
+router.put("/:eventId/picture", protect, uploadEventPicture);
 
 module.exports = router;

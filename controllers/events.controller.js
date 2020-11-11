@@ -4,6 +4,7 @@ const ErrorResponse = require("../utils/errResponse");
 const Watch = require("../models/Watch.model");
 const Canidate = require("../models/Canidate.model");
 const Comment = require("../models/Comment.model");
+const cloudinary = require("cloudinary").v2;
 
 // @desc      Create an event
 // @route     POST /api/v1/events/
@@ -210,5 +211,33 @@ exports.eventsBeingWatched = asyncHandler(async (req, res) => {
   res.json({
     success: true,
     data: events,
+  });
+});
+
+// @desc      Upload event picture
+// @route     PUT /api/v1/events/:eventId/picture
+// @access    Private
+exports.uploadEventPicture = asyncHandler(async (req, res, next) => {
+  const { eventId } = req.params;
+  const { image } = req.body;
+
+  if (!image) {
+    next(new ErrorResponse("Image is required.", 400));
+  }
+
+  const event = await Event.findById(eventId);
+
+  if (!event) {
+    next(new ErrorResponse("event is not found.", 404));
+  }
+
+  const { url } = await cloudinary.uploader.upload(image, { folder: "votbet" });
+
+  event.picture = url;
+  event.save();
+
+  res.status(200).json({
+    success: true,
+    data: event,
   });
 });

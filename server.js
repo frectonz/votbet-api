@@ -7,6 +7,7 @@ const xss = require("xss-clean");
 const express = require("express");
 const errorHandler = require("./middlewares/error");
 const connectDB = require("./config/db");
+const configureCloudinary = require("./config/cloudinary.config");
 
 // Route files
 const auth = require("./routes/auth.route");
@@ -20,6 +21,9 @@ const main = async () => {
 
   // Connect to database
   await connectDB();
+
+  // cloudinary config
+  configureCloudinary();
 
   const app = express();
 
